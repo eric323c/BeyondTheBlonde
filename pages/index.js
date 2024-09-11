@@ -1,55 +1,93 @@
-import { useEffect } from 'react';
-import Navbar from '../components/Navbar';
+import { useState } from 'react';
+import Image from 'next/image';
 
 export default function Home() {
-  useEffect(() => {
-    const sections = document.querySelectorAll('.section');
-    const options = { threshold: 0.5 };
+  const [flipped, setFlipped] = useState(false);
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-        }
-      });
-    }, options);
-
-    sections.forEach((section) => {
-      observer.observe(section);
-    });
-  }, []);
+  const handleScroll = () => {
+    setFlipped(!flipped);
+  };
 
   return (
     <>
-      <Navbar />
+      <div className={`section ${flipped ? 'flipped' : ''}`} id="section1">
+        <div className="section-background" style={{ backgroundImage: "url('https://source.unsplash.com/1600x900/?hair-salon')" }}></div>
+        <div className="section-content">
+          <h1>Beyond the Blonde</h1>
+          <button className="navbar-book-now">Book Now</button>
+        </div>
+      </div>
 
-      {/* Hero Section */}
-      <section className="hero-section section">
-        <div className="hero-left">
-          <img
-            src="https://jaylophotos.pixieset.com/download/photo/?username=jaylophotos&key=beyondtheblonde&token=yFxGXEXbVIDIEEIC9s2EG4LAN0DZJYGt7cgQyDqWW2Tw5ICbXd8vbN3yWZ6QTZwXOVypIBXHNYamVFdkR1tnSI5wecMkimruwFVRjgYMdT-LW-3GTyftmY5tTospv8vaN4vuC1LzOKhE352Pa4gweOVvbpV-LqipovkGVKlw8ME"
-            alt="Salon"
-          />
+      <div className="section diagonal-split" id="section2">
+        <div className="section-background" style={{ backgroundImage: "url('https://source.unsplash.com/1600x900/?hair-dresser')" }}></div>
+        <div className="section-content">
+          <h1>About Us</h1>
+          <p>Welcome to Beyond the Blonde. Meet Lexi and learn more about our salon.</p>
         </div>
-        <div className="hero-right">
-          <h1 className="hero-logo">Beyond the Blonde</h1>
-          <button className="book-now-btn">Book Now</button>
-        </div>
-      </section>
+      </div>
 
-      {/* About Us Section */}
-      <section className="about-section section">
-        <div className="about-left">
-          <img
-            src="https://jaylophotos.pixieset.com/download/photo/?username=jaylophotos&key=beyondtheblonde&token=9Kq5uU-P5sTJYRGS3MDWQXCgBWSE7dR3zOhG_K10VYFxnxIhs_ldJeUNGoQQA-hhvv_aZyTzS8jJceuaxpAOxaS7jiydj0glHPPNkMSTzC8NJGtt15r9jePlAP4aBK-nl50n3VUm3-4tmNC0RgSKwkh5FpewVmNB2a3UJvdKIns"
-            alt="Lexie"
-          />
+      <div className="section" id="section3">
+        <div className="section-background" style={{ backgroundImage: "url('https://source.unsplash.com/1600x900/?haircut')" }}></div>
+        <div className="section-content">
+          <h1>Contact Us</h1>
+          <p>Get in touch to book an appointment or learn more about our services.</p>
         </div>
-        <div className="about-right">
-          <h2>About Lexie</h2>
-          <p>Lexie is a creative stylist offering...</p>
-        </div>
-      </section>
+      </div>
+
+      <div className="footer">
+        <p>&copy; 2024 Beyond the Blonde Hair Studio</p>
+      </div>
+
+      <style jsx>{`
+        body {
+          overflow: hidden;
+        }
+        .section {
+          height: 100vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: relative;
+          background-color: #000;
+          transition: transform 0.8s ease-in-out;
+          transform-style: preserve-3d;
+        }
+        .section.flipped {
+          transform: rotateY(180deg);
+        }
+        .section-content {
+          z-index: 2;
+          color: white;
+          text-align: center;
+        }
+        .section-background {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-size: cover;
+          background-position: center;
+          z-index: 1;
+          opacity: 0.8;
+        }
+        .diagonal-split {
+          transform-origin: left;
+          transition: transform 1s ease;
+        }
+        .footer {
+          text-align: center;
+          padding: 20px;
+          background-color: #111;
+          color: white;
+        }
+        .navbar-book-now {
+          background-color: #d4af37;
+          padding: 10px 20px;
+          border-radius: 30px;
+          font-weight: bold;
+        }
+      `}</style>
     </>
   );
 }
