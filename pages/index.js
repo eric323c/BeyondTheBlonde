@@ -1,21 +1,25 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import Head from 'next/head';
 
 export default function Home() {
-  const [activeSection, setActiveSection] = useState(0);
+  const sectionsRef = useRef([]);
 
-  // Scroll Trigger Animation
   useEffect(() => {
     const handleScroll = () => {
+      const windowHeight = window.innerHeight;
       const scrollY = window.scrollY;
-      const height = window.innerHeight;
-      setActiveSection(Math.floor(scrollY / height));
+      sectionsRef.current.forEach((section, index) => {
+        const offset = section.offsetTop;
+        if (scrollY >= offset - windowHeight / 2 && scrollY < offset + windowHeight / 2) {
+          section.classList.add('in-view');
+        } else {
+          section.classList.remove('in-view');
+        }
+      });
     };
+    
     window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
@@ -37,8 +41,7 @@ export default function Home() {
         </nav>
       </header>
 
-      {/* Section 1 */}
-      <div className={`section section1 ${activeSection === 0 ? 'in-view' : ''}`}>
+      <div ref={(el) => (sectionsRef.current[0] = el)} className="section section1">
         <div className="section-background" style={{ backgroundImage: "url('https://source.unsplash.com/1600x900/?hair-salon')" }}></div>
         <div className="section-content">
           <h1>Beyond the Blonde</h1>
@@ -46,8 +49,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Section 2 */}
-      <div className={`section section2 ${activeSection === 1 ? 'in-view' : ''}`}>
+      <div ref={(el) => (sectionsRef.current[1] = el)} className="section section2">
         <div className="section-background" style={{ backgroundImage: "url('https://source.unsplash.com/1600x900/?hair-stylist')" }}></div>
         <div className="section-content">
           <h2>About Us</h2>
@@ -55,8 +57,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Section 3 */}
-      <div className={`section section3 ${activeSection === 2 ? 'in-view' : ''}`}>
+      <div ref={(el) => (sectionsRef.current[2] = el)} className="section section3">
         <div className="section-background" style={{ backgroundImage: "url('https://source.unsplash.com/1600x900/?salon-experience')" }}></div>
         <div className="section-content">
           <h2>Experience</h2>
@@ -64,8 +65,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Section 4 */}
-      <div className={`section section4 ${activeSection === 3 ? 'in-view' : ''}`}>
+      <div ref={(el) => (sectionsRef.current[3] = el)} className="section section4">
         <div className="section-background" style={{ backgroundImage: "url('https://source.unsplash.com/1600x900/?salon-shop')" }}></div>
         <div className="section-content">
           <h2>Shop</h2>
