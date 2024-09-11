@@ -5,6 +5,7 @@ body, html {
   font-family: 'Poppins', sans-serif;
   height: 100%;
   overflow-x: hidden;
+  background-color: #000;
 }
 
 .navbar {
@@ -50,8 +51,8 @@ body, html {
   display: flex;
   justify-content: center;
   align-items: center;
-  perspective: 1000px;
   opacity: 0;
+  transform: translateY(100%);
   transition: opacity 1s ease, transform 1s ease;
   z-index: 0;
   overflow: hidden;
@@ -59,6 +60,7 @@ body, html {
 
 .section.in-view {
   opacity: 1;
+  transform: translateY(0);
 }
 
 .section-background {
@@ -98,50 +100,33 @@ h2 {
   border-radius: 0.5rem;
 }
 
-/* Animations */
-.section1.in-view {
-  transform: translateY(0);
-}
-
+/* Animations for card-like transitions */
 .section2 {
-  transform: rotateY(-90deg) translateY(100vh);
+  transform: translateY(100%);
 }
 
 .section2.in-view {
-  transform: rotateY(0);
+  animation: flip-in 1s ease forwards;
 }
 
 .section3 {
-  transform: translateX(100%);
-}
-
-.section3.in-view {
-  transform: translateX(0);
-}
-
-.section4 {
-  transform: rotateX(90deg);
-}
-
-.section4.in-view {
-  transform: rotateX(0);
-}
-
-/* Card Flip Effect */
-.section2.in-view {
-  animation: card-flip 1s ease forwards;
+  transform: translateY(100%);
 }
 
 .section3.in-view {
   animation: slide-in 1s ease forwards;
 }
 
-.section4.in-view {
-  animation: rotate-in 1s ease forwards;
+.section4 {
+  transform: translateY(100%);
 }
 
-/* Keyframes for animation */
-@keyframes card-flip {
+.section4.in-view {
+  animation: diagonal-split 1s ease forwards;
+}
+
+/* Keyframes for smooth reveal animations */
+@keyframes flip-in {
   0% {
     transform: rotateY(90deg);
   }
@@ -159,7 +144,7 @@ h2 {
   }
 }
 
-@keyframes rotate-in {
+@keyframes diagonal-split {
   0% {
     transform: rotateX(90deg);
   }
