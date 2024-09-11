@@ -115,6 +115,14 @@ h2 {
   transform: translateY(0);
 }
 
+.section4 {
+  transform: translateY(300vh);
+}
+
+.section4.in-view {
+  transform: translateY(0);
+}
+
 /* Card Flip Effect */
 .section2.in-view {
   animation: card-flip 1s ease forwards;
@@ -122,6 +130,10 @@ h2 {
 
 .section3.in-view {
   animation: card-diagonal-cut 1s ease forwards;
+}
+
+.section4.in-view {
+  animation: fade-in 1s ease forwards;
 }
 
 /* Keyframes for animation */
@@ -140,5 +152,14 @@ h2 {
   }
   100% {
     clip-path: polygon(0 0, 100% 0, 50% 100%, 50% 100%);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
