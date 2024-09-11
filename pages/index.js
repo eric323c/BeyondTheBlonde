@@ -17,7 +17,7 @@ export default function Home() {
         }
       });
     };
-    
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -42,7 +42,7 @@ export default function Home() {
       </header>
 
       <div ref={(el) => (sectionsRef.current[0] = el)} className="section section1">
-        <div className="section-background" style={{ backgroundImage: "url('https://source.unsplash.com/1600x900/?hair-salon')" }}></div>
+        <div className="section-background" style={{ backgroundImage: "url('https://images.pexels.com/photos/973403/pexels-photo-973403.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')" }}></div>
         <div className="section-content">
           <h1>Beyond the Blonde</h1>
           <button className="book-now">Book Now</button>
@@ -50,7 +50,7 @@ export default function Home() {
       </div>
 
       <div ref={(el) => (sectionsRef.current[1] = el)} className="section section2">
-        <div className="section-background" style={{ backgroundImage: "url('https://source.unsplash.com/1600x900/?hair-stylist')" }}></div>
+        <div className="section-background" style={{ backgroundImage: "url('https://images.pexels.com/photos/853427/pexels-photo-853427.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')" }}></div>
         <div className="section-content">
           <h2>About Us</h2>
           <p>We create a tailored hair experience at Beyond the Blonde.</p>
@@ -58,7 +58,7 @@ export default function Home() {
       </div>
 
       <div ref={(el) => (sectionsRef.current[2] = el)} className="section section3">
-        <div className="section-background" style={{ backgroundImage: "url('https://source.unsplash.com/1600x900/?salon-experience')" }}></div>
+        <div className="section-background" style={{ backgroundImage: "url('https://images.pexels.com/photos/331989/pexels-photo-331989.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')" }}></div>
         <div className="section-content">
           <h2>Experience</h2>
           <p>Enjoy luxury treatments in a private suite.</p>
@@ -66,7 +66,7 @@ export default function Home() {
       </div>
 
       <div ref={(el) => (sectionsRef.current[3] = el)} className="section section4">
-        <div className="section-background" style={{ backgroundImage: "url('https://source.unsplash.com/1600x900/?salon-shop')" }}></div>
+        <div className="section-background" style={{ backgroundImage: "url('https://images.pexels.com/photos/973403/pexels-photo-973403.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')" }}></div>
         <div className="section-content">
           <h2>Shop</h2>
           <p>Explore our curated collection of salon products.</p>
