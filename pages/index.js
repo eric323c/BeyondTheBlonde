@@ -25,13 +25,15 @@ export default function Home() {
       </Head>
       <header className="navbar">
         <nav>
-          <div className="navbar-logo">Beyond the Blonde</div>
           <div className="navbar-links">
             <a href="#section1">Home</a>
-            <a href="#section2">About Us</a>
-            <a href="#section3">Contact</a>
+            <a href="#section2">About</a>
           </div>
-          <button className="navbar-book-now">Book Now</button>
+          <div className="navbar-logo">Beyond the Blonde</div>
+          <div className="navbar-links">
+            <a href="#section3">Experience</a>
+            <a href="#section4">Shop</a>
+          </div>
         </nav>
       </header>
 
@@ -49,16 +51,25 @@ export default function Home() {
         <div className="section-background" style={{ backgroundImage: "url('https://source.unsplash.com/1600x900/?hair-stylist')" }}></div>
         <div className="section-content">
           <h2>About Us</h2>
-          <p>Welcome to Beyond the Blonde! We specialize in creating the perfect hair experience.</p>
+          <p>We create a tailored hair experience at Beyond the Blonde.</p>
         </div>
       </div>
 
       {/* Section 3 */}
       <div className={`section section3 ${activeSection === 2 ? 'in-view' : ''}`}>
-        <div className="section-background" style={{ backgroundImage: "url('https://source.unsplash.com/1600x900/?salon-interior')" }}></div>
+        <div className="section-background" style={{ backgroundImage: "url('https://source.unsplash.com/1600x900/?salon-experience')" }}></div>
         <div className="section-content">
-          <h2>Contact Us</h2>
-          <p>Get in touch with us to book your next appointment!</p>
+          <h2>Experience</h2>
+          <p>Enjoy luxury treatments in a private suite.</p>
+        </div>
+      </div>
+
+      {/* Section 4 */}
+      <div className={`section section4 ${activeSection === 3 ? 'in-view' : ''}`}>
+        <div className="section-background" style={{ backgroundImage: "url('https://source.unsplash.com/1600x900/?salon-shop')" }}></div>
+        <div className="section-content">
+          <h2>Shop</h2>
+          <p>Explore our curated collection of salon products.</p>
         </div>
       </div>
     </>
