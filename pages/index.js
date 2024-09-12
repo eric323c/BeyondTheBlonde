@@ -1,27 +1,6 @@
-import { useEffect, useRef } from 'react';
 import Head from 'next/head';
 
 export default function Home() {
-  const sectionsRef = useRef([]);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const windowHeight = window.innerHeight;
-      const scrollY = window.scrollY;
-      sectionsRef.current.forEach((section, index) => {
-        const offset = section.offsetTop;
-        if (scrollY >= offset - windowHeight / 2 && scrollY < offset + windowHeight / 2) {
-          section.classList.add('in-view');
-        } else {
-          section.classList.remove('in-view');
-        }
-      });
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
     <>
       <Head>
@@ -30,46 +9,22 @@ export default function Home() {
       <header className="navbar">
         <nav>
           <div className="navbar-links">
-            <a href="#section1">Home</a>
-            <a href="#section2">About</a>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
           </div>
           <div className="navbar-logo">Beyond the Blonde</div>
           <div className="navbar-links">
-            <a href="#section3">Experience</a>
-            <a href="#section4">Shop</a>
+            <a href="#experience">Experience</a>
+            <a href="#shop">Shop</a>
           </div>
         </nav>
       </header>
 
-      <div ref={(el) => (sectionsRef.current[0] = el)} className="section section1">
-        <div className="section-background" style={{ backgroundImage: "url('https://images.pexels.com/photos/331989/pexels-photo-331989.jpeg')" }}></div>
-        <div className="section-content">
-          <h1>Beyond the Blonde</h1>
-          <button className="book-now">Book Now</button>
-        </div>
-      </div>
-
-      <div ref={(el) => (sectionsRef.current[1] = el)} className="section section2">
-        <div className="section-background" style={{ backgroundImage: "url('https://images.pexels.com/photos/331989/pexels-photo-331989.jpeg')" }}></div>
-        <div className="section-content">
-          <h2>About Us</h2>
-          <p>We create a tailored hair experience at Beyond the Blonde.</p>
-        </div>
-      </div>
-
-      <div ref={(el) => (sectionsRef.current[2] = el)} className="section section3">
-        <div className="section-background" style={{ backgroundImage: "url('https://images.pexels.com/photos/331989/pexels-photo-331989.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')" }}></div>
-        <div className="section-content">
-          <h2>Experience</h2>
-          <p>Enjoy luxury treatments in a private suite.</p>
-        </div>
-      </div>
-
-      <div ref={(el) => (sectionsRef.current[3] = el)} className="section section4">
+      <div className="section" id="home">
         <div className="section-background" style={{ backgroundImage: "url('https://images.pexels.com/photos/973403/pexels-photo-973403.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')" }}></div>
         <div className="section-content">
-          <h2>Shop</h2>
-          <p>Explore our curated collection of salon products.</p>
+          <h1 className="logo-text">Beyond the Blonde</h1>
+          <button className="book-now">Book Now</button>
         </div>
       </div>
     </>
